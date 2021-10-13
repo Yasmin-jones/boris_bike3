@@ -1,13 +1,19 @@
+
 require_relative 'bike'
+
 class DockingStation
    attr_reader :bike
 
-  def release_bike
-    Bike.new
+  def docked_bike(bike)
+    #guard condition
+    fail 'Capacity Full' if @bike
+    @bike = bike
   end
 
-  def return_bike(bike)
-    @bike = bike
+  def release_bike
+    #guard condition
+    fail 'No bikes available.' unless @bike
+    @bike
   end
 
   #def bike
